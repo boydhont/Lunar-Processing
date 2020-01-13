@@ -430,4 +430,37 @@ public class Meshes {
 		return unweldedMesh;
 	}*/
 	
+	/**
+	 * Converts a mesh to a PShape
+	 * @param applet The Processing applet, write "this"
+	 * @param mesh The input mesh
+	 * @return The mesh as a PShape
+	 */
+	
+	static final processing.core.PShape PShape (processing.core.PApplet applet, LMesh mesh)
+	{
+		processing.core.PShape shape = applet.createShape();
+		
+		shape.beginShape(processing.core.PConstants.TRIANGLES);
+		
+		for(LFace f : mesh.faces)
+		{
+		    LVector a = mesh.vertices.get(f.a);
+		    LVector b = mesh.vertices.get(f.b);
+		    LVector c = mesh.vertices.get(f.c);
+		    
+		    LVector n = Vectors.unitVector(Vectors.crossProduct(Vectors.twoPointVector(a,c),Vectors.twoPointVector(a,b)));
+		 
+		    
+		    shape.normal(n.x, n.y, n.z);
+		    shape.vertex(a.x, a.y, a.z);
+		    shape.vertex(b.x, b.y, b.z);
+		    shape.vertex(c.x, c.y, c.z);
+		}
+		
+		shape.endShape();
+		
+		return shape;
+	}
+	
 }

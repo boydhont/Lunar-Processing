@@ -284,8 +284,8 @@ public class Lists {
 	/**
 	 * Replaces nulls with other data
 	 * @param <T> The type of items stored in the list
-	 * @param list The input list The items that will replace the items in the list
-	 * @param replacements
+	 * @param list The input list
+	 * @param replacements The items that will replace the items in the list
 	 * @return The list with replaced items
 	 */
 	
