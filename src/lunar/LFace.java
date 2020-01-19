@@ -5,7 +5,6 @@ public class LFace {
 	public int a;
 	public int b;
 	public int c;
-	//public bool flippedNormal;
 	
 	public LFace(int _a, int _b, int _c)
 	{

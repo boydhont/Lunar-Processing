@@ -152,4 +152,56 @@ public class Render {
 		graphicsBuffer.hint(processing.core.PConstants.ENABLE_DEPTH_TEST);
 	}
 	
+	/**
+	 * Creates a static camera
+	 * @param applet The Processing applet, write "this"
+	 * @param target The position the camera is looking towards to
+	 * @param position The position of the camera
+	 */
+	
+	public static final void staticCamera(processing.core.PApplet applet, LVector target, LVector position)
+	{
+		applet.camera(position.x, position.y, position.z, target.x, target.y, target.z, 0, 0, -1);
+	}
+	
+	/**
+	 * Creates a camera that orbits around a target point
+	 * @param applet The Processing applet, write "this"
+	 * @param target The position the camera is looking towards to
+	 * @param polarPosition The position of the camera as a three-dimensional polar coordinate
+	 */
+	
+	public static void orbitCamera(processing.core.PApplet applet, LVector target, LVector polarPosition)
+	{
+		LVector position = new LVector
+		(
+			(float)(java.lang.Math.cos(polarPosition.y)*polarPosition.x), 
+			(float)(java.lang.Math.sin(polarPosition.y)*polarPosition.x), 
+			(float)(java.lang.Math.sin(polarPosition.z)*polarPosition.x)
+	    );
+
+		position = Vectors.addedVector(position, target);
+
+		applet.camera(position.x, position.y, position.z, target.x, target.y, target.z, 0, 0, -1);
+	}
+	
+	/**
+	 * Creates a camera that around a target points, dependent on the mouse position
+	 * @param applet The Processing applet, write "this"
+	 * @param target The position the camera is looking towards to
+	 * @param cameraDistance The distance of the camera to the target
+	 */
+	
+	public static void mouseCamera(processing.core.PApplet applet, LVector target, float cameraDistance)
+	{
+		LVector mousePosition = new LVector
+		(
+			cameraDistance, 
+			processing.core.PApplet.map(applet.mouseX, 0, applet.width, (float)java.lang.Math.PI, (float)-java.lang.Math.PI), 
+			processing.core.PApplet.map(applet.mouseY, 0, applet.height, (float)java.lang.Math.PI/2, (float)-java.lang.Math.PI/2) 
+		);
+
+		orbitCamera(applet, target, mousePosition);
+	}
+	
 }
