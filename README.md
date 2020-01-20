@@ -22,7 +22,7 @@ void draw(){
 ```
 
 ### Why use Lunar?
-Lunar is meant for architects, designers and artists that don't want to learn multiple, complex, libraries to visualise their threedimensional concepts. Lunar has all the building blocks for fast sketching in three dimensions.
+Lunar is meant for architects, designers and artists that don't want to learn multiple, complex, libraries to visualize their three-dimensional concepts. Lunar has all the building blocks for fast sketching in three dimensions.
 
 ### How to work with Lunar?
 Lunar groups her algorithms under several classes:
