@@ -87,12 +87,12 @@ void draw()
   LVector mousePosition = new LVector(mouseX, mouseY);
   ArrayList<LVector> flattedPoints = new ArrayList<LVector>();
   for (LVector v : points) flattedPoints.add(new LVector(v.x, v.y));
-  ArrayList<LVector> highlightetPoints = Vectors.closestVectors(mousePosition, flattedPoints, 40);
+  ArrayList<LVector> highlightedPoints = Vectors.closestVectors(mousePosition, flattedPoints, 40);
 
   //Render points close to the mouse    
   noFill();
 
-  for (LVector v : highlightetPoints)
+  for (LVector v : highlightedPoints)
   {
     stroke
       (
